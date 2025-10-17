@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.3/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Markdown to HTML Converter</h1>
+        <div class="form-group">
+            <label for="markdownInput">Enter Markdown:</label>
+            <textarea id="markdownInput" class="form-control" rows="10"></textarea>
+        </div>
+        <button id="convertButton" class="btn btn-primary">Convert</button>
+        <h2>Output:</h2>
+        <div id="output"></div>
+    </div>
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            var markdownText = document.getElementById('markdownInput').value;
+            var htmlContent = marked(markdownText);
+            document.getElementById('output').innerHTML = htmlContent;
+            hljs.highlightAll();
+        });
+    </script>
+</body>
+</html>
